@@ -7,9 +7,9 @@ const Body = () => {
         <div >
             <NavBar />
 
-            
-                <Outlet />
-          
+
+            <Outlet />
+
 
             <Footer />
         </div>
