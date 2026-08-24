@@ -20,3 +20,7 @@
 -Login and see if your data is comming crct in store
 -Navbar should update as soon as user logs in
 -Refactor our code to add constants file  + create components folder
+-should not be able to add other routes without login
+-if token is not present ,redirect user to login page
+-Logout
+-ProfilePage
