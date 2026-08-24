@@ -7,3 +7,6 @@
 -Create a NavBar.jsx seperate common file 
 -Installed reactrouterdom
 -Create a Login 
+-Install Axios
+-CORS - install cors at backend and add middleware with configuration: origin,credetials:true
+-Whenever you are making an api call pass to axios=>{withCredentials:true} // withoutcredentials true we will not get token back

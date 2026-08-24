@@ -1,10 +1,10 @@
 import { BrowserRouter, Routes, Route } from 'react-router-dom'
 import Body from './body'
-import Login from './login'
 import Profile from './Profile'
+import Login from './Login'
 function App() {
+  console.log("APP UPDATED")
   return (
-    <>
       <BrowserRouter basename='/'>
         <Routes>
           <Route path='/' element={<Body />}>
@@ -13,8 +13,6 @@ function App() {
           </Route>
         </Routes>
       </BrowserRouter>
-      
-    </>
   )
 }
 
