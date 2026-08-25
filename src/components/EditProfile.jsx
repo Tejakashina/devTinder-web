@@ -6,13 +6,12 @@ import { useNavigate } from 'react-router-dom'
 import { BASE_URL } from '../utils/constants'
 import UserCard from './userCard'
 const EditProfile = ({ user }) => {
-    console.log(user,"edit")
     const navigate = useNavigate()
     const [firstName, setFirstName] = useState(user.firstName)
     const [lastName, setLastName] = useState(user.lastName)
     const [photoUrl, setPhotoUrl] = useState(user.photoUrl)
-    const [age, setAge] = useState(user.age)
-    const [gender, setGender] = useState(user.gender)
+    const [age, setAge] = useState(user.age || '')
+    const [gender, setGender] = useState(user.gender || '')
     const [about, setAbout] = useState(user.about)
     const [showToast,setShowToast]=useState(false)
     const updateProfile = async () => {

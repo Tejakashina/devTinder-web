@@ -21,6 +21,8 @@ const Feed = () => {
   useEffect(() => {
     getFeed()
   }, [])
+  if (!feed) return
+  if (feed.length <= 0) return <p className='text-center my-10 font-bold'>No New Users Found</p>
   return (
     feed && (
       <div className="flex justify-center my-10">
