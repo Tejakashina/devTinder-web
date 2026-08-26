@@ -24,3 +24,50 @@
 -if token is not present ,redirect user to login page
 -Logout
 -ProfilePage
+
+
+
+
+
+#Deployment
+-Signup on AWS
+-Launch Instance
+-chmod 400 secret.pem 
+-connected to maching using ssh -i "devTinder-secret.pem" ubuntu@ec2-51-21-182-139.eu-north-1.compute.amazonaws.com
+-Install node version 24.xx.0 same as local node version
+-git clone 2 projects
+Frontend
+    -in ubuntu installe dependencies  by npm install
+    -npm run build on both ubuntu and local
+    -sudo apt update
+    -sudo apt install nginx
+    -sudo systemctl start nginx
+    -sudo systemctl enable nginx 
+    -copy code from dist(build files) to var/www/html for that use  sudo scp -r dist/* /var/www/html
+    -Enable port 80 on your instance
+Backend
+   -if there is any git changes make sure git pull if its done after cloning git into ubuntu
+   -npm run start
+   -enable port 7777 fothat allow ec2 instance public ip on mongodb server 
+   -pm2 installationm will help you to manage and keep your application online 24/7 by - (npm install -g pm2) and
+    do pm2 start npm -- start so that it will work in background, to change name pm2 start npm --name "devTinder" -- start
+    -pm2 logs to see logs
+    -to clear logs- pm2 flush (<name> of application). so pm2 flush npm-this npm is from table
+    -pm2 list, pm2 stop <name>, pm2 delete <name>, 
+    -config nginx= sudo nano etc/nginx/sites-available/default
+
+nginx Config:
+ server_name 51.21.182.139;
+    location /api/ {
+        proxy_pass http://localhost:7777/;
+
+        proxy_http_version 1.1;
+        proxy_set_header Host $host;
+        proxy_set_header X-Real-IP $remote_addr;
+        proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;
+        proxy_set_header X-Forwarded-Proto $scheme;
+    }
+
+-After configuring restart nginx by sudo systemctl restart nginx
+-Modify in frontend in constants change baseurl from  "http://localhost:7777" to "/api"
+
