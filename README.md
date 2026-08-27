@@ -71,3 +71,26 @@ nginx Config:
 -After configuring restart nginx by sudo systemctl restart nginx
 -Modify in frontend in constants change baseurl from  "http://localhost:7777" to "/api"
 
+
+
+#Adding a custom name domaim
+ -purchased domain name for godaddy
+ -signup for cloudfare
+ -change the nameservers on godaddy and point it to cloudfare
+ -wait for sometime till your name servers are updated
+ -Enable SSL for website as flexible
+
+#Sending Emails via ses
+-create iam user 
+-give access to AMAZONSESFullAccess
+-Amzon SES:create an identity
+-Verify your domain name
+-verify an email adress identity
+-Install AWS SDK-V3
+-code Example  https://github.com/awsdocs/aws-doc-sdk-examples/tree/main/javascriptv3/example_code/ses#code-examples
+-setup ses client
+-acess credentials should be created in IAM under security credentials Tab
+-add the credentials to the env file
+-write code for sending emailadress
+-Make the email dynamic by pasiing more parameters to run function 
+
