@@ -1,8 +1,22 @@
 import axios from "axios";
 import React from "react";
+import { useState } from "react";
 import { BASE_URL } from "../utils/constants";
 
 const Premium = () => {
+    const verifyPremiumUser = async (response) => {
+        const [isUserPremium, setIsUserPremium] = useState(false);
+        try {
+            const res = await axios.get(BASE_URL + '/premium/verify', { withCredentials: true })
+            if (res.data.isPremium) {
+                alert("Payment Successful! You are now a premium user.")
+                setIsUserPremium(true);
+            }
+        }
+        catch (err) {
+            console.log(err)
+        }
+    }
     const handleBuyClick = async (membershipType) => {
         try {
             const order = await axios.post(BASE_URL + '/payment/create',
@@ -12,7 +26,7 @@ const Premium = () => {
                 { withCredentials: true }
             )
             //It should open razorpay dialog box
-            const {amount, keyId,currency,notes,orderId} = order.data;
+            const { amount, keyId, currency, notes, orderId } = order.data;
             const options = {
                 key: keyId, // Replace with your Razorpay key_id
                 amount: amount, // Amount is in currency subunits.
@@ -28,7 +42,10 @@ const Premium = () => {
                 theme: {
                     color: '#F37254'
                 },
-            };
+                handler: verifyPremiumUser
+
+            }
+
             const rzp = new window.Razorpay(options);
             rzp.open();
         }
@@ -36,7 +53,7 @@ const Premium = () => {
             console.log(err)
         }
     }
-    return (
+    return (!isUserPremium ?
         <div className="min-h-screen bg-base-200 px-6 py-12">
             <div className="text-center mb-12">
                 <h1 className="text-4xl md:text-5xl font-bold">
@@ -154,7 +171,7 @@ const Premium = () => {
 
 
 
-        </div>
+        </div> : "You are already a premium user. Enjoy the benefits!"
     );
 };
 
