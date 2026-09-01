@@ -4,8 +4,8 @@ import { useState } from "react";
 import { BASE_URL } from "../utils/constants";
 
 const Premium = () => {
+    const [isUserPremium, setIsUserPremium] = useState(false);
     const verifyPremiumUser = async (response) => {
-        const [isUserPremium, setIsUserPremium] = useState(false);
         try {
             const res = await axios.get(BASE_URL + '/premium/verify', { withCredentials: true })
             if (res.data.isPremium) {
