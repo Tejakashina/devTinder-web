@@ -94,3 +94,22 @@ nginx Config:
 -write code for sending emailadress
 -Make the email dynamic by pasiing more parameters to run function 
 
+
+#RazorPay Payment Gateway Integration
+-signup on razorpay & complete KYC
+-created ui for premium page
+-creating an api for create order in Backend 
+-added my key and secret in env file
+-Intialized razorpay in utils
+-creating order on razorpay
+-create schema and model
+-saved the order in payments collection
+-make the API dynamic
+-setup razorpay webhook on your live api
+-create webhook api
+-my secretkey in webhook-DEVTINDER$123
+-Reference -https://github.com/razorpay/razorpay-node/tree/master/documents
+https://razorpay-881012b3.mintlify.app/docs/payments/server-integration/nodejs/integration-steps#integrate-with-razorpay-payment-gateway 
+https://razorpay-881012b3.mintlify.app/docs/webhooks/validate-test
+https://razorpay.com/docs/webhooks/payments
+
