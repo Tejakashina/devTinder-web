@@ -113,3 +113,6 @@ https://razorpay-881012b3.mintlify.app/docs/payments/server-integration/nodejs/i
 https://razorpay-881012b3.mintlify.app/docs/webhooks/validate-test
 https://razorpay.com/docs/webhooks/payments
 
+
+#Realtime chat using websocket(socket.io)
+https://socket.io/docs/v4/tutorial/introduction go through this

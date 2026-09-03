@@ -37,7 +37,8 @@ const UserCard = ({ user, showActions = true }) => {
         <div className="
             card
             bg-base-100
-            w-96
+            w-full
+            max-w-sm
             overflow-hidden
             shadow-xl
             border
@@ -49,7 +50,12 @@ const UserCard = ({ user, showActions = true }) => {
         ">
 
             {/* Profile Image */}
-            <figure className="relative h-96 bg-base-300">
+            <figure className="
+                relative
+                h-64
+                sm:h-96
+                bg-base-300
+            ">
 
                 <img
                     className="
@@ -66,7 +72,7 @@ const UserCard = ({ user, showActions = true }) => {
                     absolute
                     inset-x-0
                     bottom-0
-                    h-32
+                    h-24
                     bg-gradient-to-t
                     from-black/70
                     to-transparent
@@ -77,10 +83,18 @@ const UserCard = ({ user, showActions = true }) => {
 
 
             {/* Card Content */}
-            <div className="card-body p-6">
+            <div className="
+                card-body
+                p-4
+                sm:p-6
+            ">
 
                 {/* Name */}
-                <h2 className="text-2xl font-bold">
+                <h2 className="
+                    text-xl
+                    sm:text-2xl
+                    font-bold
+                ">
                     {firstName + " " + lastName}
                 </h2>
 
@@ -95,7 +109,12 @@ const UserCard = ({ user, showActions = true }) => {
                     )}
 
                     {gender && (
-                        <span className="badge badge-secondary badge-outline capitalize">
+                        <span className="
+                            badge
+                            badge-secondary
+                            badge-outline
+                            capitalize
+                        ">
                             {gender}
                         </span>
                     )}
@@ -105,11 +124,12 @@ const UserCard = ({ user, showActions = true }) => {
 
                 {/* About */}
                 <p className="
-                    mt-3
+                    mt-2
+                    text-sm
+                    sm:text-base
                     text-base-content/70
                     leading-relaxed
-                    line-clamp-3
-                    min-h-[72px]
+                    line-clamp-2
                 ">
                     {about || "No information available."}
                 </p>
@@ -119,9 +139,13 @@ const UserCard = ({ user, showActions = true }) => {
                 {showActions && (
                     <div className="
                         card-actions
+                        flex
+                        flex-row
                         justify-center
-                        gap-4
-                        mt-5
+                        gap-2
+                        sm:gap-4
+                        mt-4
+                        w-full
                     ">
 
                         <button
@@ -130,7 +154,11 @@ const UserCard = ({ user, showActions = true }) => {
                                 btn-error
                                 btn-outline
                                 rounded-full
-                                px-7
+                                flex-1
+                                px-2
+                                sm:px-7
+                                text-sm
+                                sm:text-base
                             "
                             onClick={() =>
                                 sendRequest("ignored", _id)
@@ -145,7 +173,11 @@ const UserCard = ({ user, showActions = true }) => {
                                 btn
                                 btn-success
                                 rounded-full
-                                px-7
+                                flex-1
+                                px-2
+                                sm:px-7
+                                text-sm
+                                sm:text-base
                             "
                             onClick={() =>
                                 sendRequest("interested", _id)
