@@ -10,35 +10,39 @@ const Body = () => {
     const dispatch = useDispatch()
     const navigate = useNavigate()
     const userData = useSelector((store) => store.user)
+
     const fetchUser = async () => {
         try {
-            const res = await axios.get(BASE_URL + '/profile',
-                { withCredentials: true })
-            dispatch((addUser(res.data)))
+            const res = await axios.get(
+                BASE_URL + '/profile',
+                { withCredentials: true }
+            )
 
+            dispatch(addUser(res.data))
         }
         catch (err) {
             if (err.status === 401) {
                 navigate('/login')
             }
         }
-
     }
+
     useEffect(() => {
         if (!userData) {
             fetchUser()
         }
     }, [])
+
     return (
-        <div >
+        <div>
             <NavBar />
 
-
             <Outlet />
-
 
             <Footer />
         </div>
     )
 }
+
 export default Body
+

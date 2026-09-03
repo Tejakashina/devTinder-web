@@ -37,8 +37,7 @@ const UserCard = ({ user, showActions = true }) => {
         <div className="
             card
             bg-base-100
-            w-full
-            max-w-sm
+            w-96
             overflow-hidden
             shadow-xl
             border
@@ -48,58 +47,25 @@ const UserCard = ({ user, showActions = true }) => {
             duration-300
             hover:-translate-y-1
         ">
-
-            {/* Profile Image */}
-            <figure className="
-                relative
-                h-64
-                sm:h-96
-                bg-base-300
-            ">
+            <figure className="relative h-90 bg-base-300">
 
                 <img
                     className="
                         w-full
                         h-full
-                        object-cover
                     "
                     src={photoUrl}
                     alt="Photo"
                 />
 
-                {/* Image gradient */}
-                <div className="
-                    absolute
-                    inset-x-0
-                    bottom-0
-                    h-24
-                    bg-gradient-to-t
-                    from-black/70
-                    to-transparent
-                ">
-                </div>
 
             </figure>
 
+            <div className="card-body p-6">
 
-            {/* Card Content */}
-            <div className="
-                card-body
-                p-4
-                sm:p-6
-            ">
-
-                {/* Name */}
-                <h2 className="
-                    text-xl
-                    sm:text-2xl
-                    font-bold
-                ">
+                <h2 className="text-2xl font-bold">
                     {firstName + " " + lastName}
                 </h2>
-
-
-                {/* Age & Gender */}
                 <div className="flex gap-2 mt-1">
 
                     {age && (
@@ -109,43 +75,21 @@ const UserCard = ({ user, showActions = true }) => {
                     )}
 
                     {gender && (
-                        <span className="
-                            badge
-                            badge-secondary
-                            badge-outline
-                            capitalize
-                        ">
+                        <span className="badge badge-secondary badge-outline capitalize">
                             {gender}
                         </span>
                     )}
 
                 </div>
-
-
-                {/* About */}
-                <p className="
-                    mt-2
-                    text-sm
-                    sm:text-base
-                    text-base-content/70
-                    leading-relaxed
-                    line-clamp-2
-                ">
+                <p >
                     {about || "No information available."}
                 </p>
-
-
-                {/* Actions */}
                 {showActions && (
                     <div className="
                         card-actions
-                        flex
-                        flex-row
                         justify-center
-                        gap-2
-                        sm:gap-4
-                        mt-4
-                        w-full
+                        gap-4
+                        mt-2
                     ">
 
                         <button
@@ -154,11 +98,7 @@ const UserCard = ({ user, showActions = true }) => {
                                 btn-error
                                 btn-outline
                                 rounded-full
-                                flex-1
-                                px-2
-                                sm:px-7
-                                text-sm
-                                sm:text-base
+                                px-7
                             "
                             onClick={() =>
                                 sendRequest("ignored", _id)
@@ -173,11 +113,7 @@ const UserCard = ({ user, showActions = true }) => {
                                 btn
                                 btn-success
                                 rounded-full
-                                flex-1
-                                px-2
-                                sm:px-7
-                                text-sm
-                                sm:text-base
+                                px-7
                             "
                             onClick={() =>
                                 sendRequest("interested", _id)
